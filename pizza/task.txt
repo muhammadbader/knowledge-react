@@ -1,0 +1,8 @@
+Create navber component from bootstrap .... [ list : home .. about... contact... login.. Register ]
+Craete pizza componwnt
+
+Create footer component
+
+Api link :
+
+https://forkify-api.herokuapp.com/
