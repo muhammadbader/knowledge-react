@@ -26,9 +26,13 @@ export default function Login() {
 
   async function loginUser() {
     console.log("Submitting form", formik.values);
-    // TODO: axios sends API request
-    // https://ecommerce-node4.onrender.com/auth/signup
-    const { data } = await axios.post("url", formik.values);
+
+    const { data } = await axios.post(
+      "https://ecommerce-node4.onrender.com/auth/signin",
+      formik.values
+    );
+
+    console.log(data);
   }
 
   return (

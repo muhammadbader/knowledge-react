@@ -11,14 +11,14 @@ export default function Register() {
     password: Yup.string()
       .min(6, "Password must be at least 6 characters")
       .required("Password is required"),
-    username: Yup.string()
+    userName: Yup.string()
       .min(3, "Username must be at least 3 characters")
       .required("Username is required"),
   });
 
   const formik = useFormik({
     initialValues: {
-      username: "",
+      userName: "",
       email: "",
       password: "",
     },
@@ -30,9 +30,13 @@ export default function Register() {
 
   async function RegisterUser() {
     console.log("Submitting form", formik.values);
-    // TODO: axios sends API request
-    // https://ecommerce-node4.onrender.com/auth/signup
-    const { data } = await axios.post("url", formik.values);
+
+    const { data } = await axios.post(
+      "https://ecommerce-node4.onrender.com/auth/signup",
+      formik.values
+    );
+
+    console.log(data);
   }
 
   return (
@@ -43,16 +47,16 @@ export default function Register() {
             <input
               type="username"
               className="form-control"
-              id="floatingInput"
-              name="username"
+              id="floatingUser"
+              name="userName"
               onBlur={formik.handleBlur}
-              value={formik.values.username}
+              value={formik.values.userName}
               onChange={formik.handleChange}
-              placeholder="name@example.com"
+              placeholder="your name"
             />
-            <label htmlFor="floatingInput">Email address</label>
-            {formik.touched.username && formik.errors.username ? (
-              <div className="text-danger"> {formik.errors.username}</div>
+            <label htmlFor="floatingUser">User Name</label>
+            {formik.touched.userName && formik.errors.userName ? (
+              <div className="text-danger"> {formik.errors.userName}</div>
             ) : null}
           </div>
           <div className="form-floating mb-3">
